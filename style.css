@@ -135,45 +135,66 @@
 }
 
 :root {
+    --primary-white: #FEFEFF;
+
+    --primary-red: #E75352;
+    --secondary-red: #F8D3D3;
+
     --primary-pink: #ECC6BF;
     --secondary-pink: #DAB0A8;
     --light-pink: #F4D4CF;
     --hot-pink: #F977B2;
     
     --primary-blue: #CADBE6;
-    --secondary-blue: 1;
-    --light-blue: 1;
-    --dark-blue: 1;
+    --secondary-blue: #B8CBDB;
+    --light-blue: #68DFFB;
+    --dark-blue: #6570DF;
     
-    --primary-black: #111110;
-    --secondary-black: 1;
-    --light-black: 1;
-    --dark-black: 1;
+    --primary-black: #3E3E3E;
+    --secondary-black: #111110;
+    --light-black: #3E3E3E;
+    --dark-black: #111110;
     
-    --primary-green: #B2C5AE;
-    --secondary-green: 1;
-    --light-green: 1;
-    --dark-green: 1;
+    --primary-green: #C5D7C1;
+    --secondary-green: #B2C5AE;
+    --light-green: #C7EB76;
+    --dark-green: #21A09A;
     
     --primary-gray: #D4D4D7;
-    --secondary-gray: 1;
-    --light-gray: 1;
-    --dark-gray: 1;
+    --secondary-gray: #C5C5C4;
+    --light-gray: #D4D4D7;
+    --dark-gray: #C5C5C4;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
     font-family: 'Poppins', monospace;
-    box-sizing: border-box;
-    height: 100vw;
-    margin: 0;
+    height: 100vh;
+    padding-top: 1rem;
 }
 
 img {
     max-width: 100%;
 }
 
+button {
+    outline: none;
+    border: none;
+}
+
 #wrapper {
     padding: 1rem;
+    max-width: 1114px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.container {
+    flex-direction: column;
+    width: 100%;
 }
 
 .flex-container {
@@ -183,8 +204,9 @@ img {
 #ipad_wrapper .title {
     align-items: center;
     font-size: 1.3rem;
-    font-weight: 400;
+    font-weight: 500;
     justify-content: center;
+    line-height: 1;
 }
 
 #ipad_wrapper .title-accent {
@@ -193,21 +215,17 @@ img {
     font-weight: 600;
 }
 
-#ipad_wrapper .logo {
+.logo {
     width: 200px;
 }
 
-#ipad_wrapper .head {
-    margin-bottom: 1.8rem;
-}
-
-#ipad_wrapper .ipad-logo {
+.ipad-logo {
     justify-content: center;
     font-weight: 600;
     font-size: 1.5rem;
 }
 
-#ipad_wrapper .ipad-logo div:not(.logo) {
+.ipad-logo div:not(.logo) {
     margin-top: .5rem;
 }
 
@@ -215,40 +233,67 @@ img {
     align-items: center;
     justify-content: center;
     height: 300px;
-    gap: 2rem;
+    gap: 1.2rem;
 }
 
 #ipad_wrapper .ipad-display .pencil,
 #ipad_wrapper .ipad-display .ipad {
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center;
+    background-position: center center;
     height: 100%;
 }
 
 #ipad_wrapper .ipad-display .pencil {
-    width: 15px;
+    min-width: 12px;
+    width: 18px;
 }
 
 #ipad_wrapper .ipad-display .ipad {
-    width: 250px;
+    width: 300px;
+    min-width: 200px;
     position: relative;
 }
 
-#ipad_wrapper .ipad-display .deal-tag {
-    position: absolute;
-    color: #fff;
+#ipad_wrapper .ipad-display .deal-tag.gray-selected {
+    background: rgb(68,226,164);
+background: linear-gradient(183deg, rgba(68,226,164,1) 2%, rgba(80,213,239,1) 100%);
+}
+
+#ipad_wrapper .ipad-display .deal-tag.black-selected {
+    background: rgb(243,180,203);
+background: linear-gradient(90deg, rgba(243,180,203,1) 2%, rgba(246,88,59,1) 100%);
+}
+
+#ipad_wrapper .ipad-display .deal-tag.blue-selected {
+    background: var(--light-blue);
+    background: linear-gradient(90deg, var(--light-blue) 2%, var(--dark-blue) 100%);
+}
+
+#ipad_wrapper .ipad-display .deal-tag.green-selected {
+    background: var(--light-green);
+    background: linear-gradient(90deg, var(--light-green) 2%, var(--dark-green) 100%);
+}
+
+#ipad_wrapper .ipad-display .deal-tag.pink-selected {
     background: var(--hot-pink);
     background: linear-gradient(90deg, var(--hot-pink) 0%, rgba(255,0,116,1) 100%);
+}
+
+
+#ipad_wrapper .ipad-display .deal-tag {
+    position: absolute;
+    color: var(--primary-white);
     left: -10px;
-    height: 40px;
-    width: 150px;
+    width: 80%;
+    height: 50px;
     align-items: center;
-    padding: .5rem 1rem;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
+    white-space: nowrap;
+    padding: .5rem 1rem;
 }
 
 #ipad_wrapper .ipad-display .deal-tag .accent {
@@ -256,16 +301,16 @@ img {
 }
 
 #ipad_wrapper .ipad-display .deal-tag-top .accent {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 
 #ipad_wrapper .ipad-display .deal-tag-top {
     justify-content: space-between;
-    bottom: 110px;
+    bottom: 40%;
 }
 
 #ipad_wrapper .ipad-display .deal-tag-bottom {
-    bottom: 40px;
+    bottom: 20%;
     line-height: 1.2;
     flex-direction: column;
     align-items: start;
@@ -273,7 +318,7 @@ img {
 }
 
 #ipad_wrapper .ipad-display .deal-tag-bottom .accent {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 #ipad_wrapper .colors {
@@ -281,30 +326,329 @@ img {
     gap: .8rem;
 }
 
-#ipad_wrapper .colors > div {
+#ipad_wrapper .colors button {
     height: 30px;
     width: 30px;
     border-radius: 100%;
+    cursor: pointer;
 }
 
 #ipad_wrapper .colors .color-gray {
     background-color: var(--primary-gray);
+    position: relative;
 }
 
 #ipad_wrapper .colors .color-black {
-    background-color: var(--primary-black);
+    background-color: var(--secondary-black);
+    position: relative;
 }
 
 #ipad_wrapper .colors .color-blue {
     background-color: var(--primary-blue);
+    position: relative;
 }
 
 #ipad_wrapper .colors .color-green {
     background-color: var(--primary-green);
+    position: relative;
 }
 
 #ipad_wrapper .colors .color-pink {
     background-color: var(--primary-pink);
+    position: relative;
+}
+
+#ipad_wrapper .colors .gray-selected::after,
+#ipad_wrapper .colors .black-selected::after,
+#ipad_wrapper .colors .blue-selected::after,
+#ipad_wrapper .colors .green-selected::after,
+#ipad_wrapper .colors .pink-selected::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    right: -100%;
+    margin-right: -35px;
+    z-index: -1;
+    top: -3px;
+    padding: 0.2rem 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#ipad_wrapper .colors .gray-selected::after {
+    background-color: var(--secondary-gray);
+}
+
+#ipad_wrapper .colors .black-selected::after {
+    background-color: var(--primary-black);
+}
+
+#ipad_wrapper .colors .blue-selected::after {
+    background-color: var(--secondary-blue);
+}
+
+#ipad_wrapper .colors .green-selected::after {
+    background-color: var(--secondary-green);
+}
+
+#ipad_wrapper .colors .pink-selected::after {
+    background-color: var(--secondary-pink);
+}
+
+#form_wrapper h1 {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#form_wrapper form {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 .5rem;
+}
+
+#form_wrapper .form-input {
+    width: 100%;
+    margin-bottom: .5rem;
+}
+
+#form_wrapper .form-input input {
+    border-radius: 8px;
+    border: 1px solid var(--primary-gray);
+    width: 100%;
+    padding: .8rem;
+    box-shadow: rgb(100 100 111 / 28%) 0px 5px 15px 0px;
+    font-family: inherit;
+    font-weight: 400;
+}
+
+#form_wrapper .terms-conditions {
+    font-weight: 800;
+    font-size: .8rem;
+    align-items: center;
+    margin-bottom: .5rem;
+}
+
+#form_wrapper .form-inputs {
+    padding: 1rem .5rem 2rem;
+    width: 100%;
+}
+
+#form_wrapper .terms-conditions a {
+    color: #3696FE;
+    text-decoration: none;
+}
+
+#form_wrapper .submit-btn {
+    width: 100%;
+}
+
+#form_wrapper .submit-btn input.gray-selected  {
+    background: var(--primary-gray);
+    background: linear-gradient(90deg, var(--primary-gray) 34%, var(--secondary-gray) 69%);
+}
+
+#form_wrapper .submit-btn input.black-selected  {
+    background: var(--primary-black);
+    background: linear-gradient(90deg, var(--primary-black) 34%, var(--secondary-black) 69%);
+}
+
+#form_wrapper .submit-btn input.blue-selected  {
+    background: var(--primary-blue);
+    background: linear-gradient(90deg, var(--primary-blue) 34%, var(--secondary-blue) 69%);
+}
+
+#form_wrapper .submit-btn input.green-selected  {
+    background: var(--primary-green);
+    background: linear-gradient(90deg, var(--primary-green) 34%, var(--secondary-green) 69%);
+}
+
+#form_wrapper .submit-btn input.pink-selected  {
+    background: var(--primary-pink);
+    background: linear-gradient(90deg, var(--primary-pink) 34%, var(--secondary-pink) 69%);
+}
+
+#form_wrapper .submit-btn input {
+    color: var(--secondary-black);
+    width: 100%;
+    border: none;
+    border-radius: 25px;
+    padding: .5rem 0;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+#form_wrapper .language-container {
+    background-color: #676667;
+    border-radius: 8px;
+    align-items: center;
+    padding: .3rem 1.5rem;
+    gap: .3rem;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+#form_wrapper .language-container span {
+    color: var(--primary-white);
+    font-weight: 600;
+}
+
+#form_wrapper .language-container .flag {
+    width: 30px;
+}
+
+#form_wrapper .ipad-logo {
+    display: none;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#form_wrapper .ipad-logo .logo {
+    width: 300px;
+}
+
+#form_wrapper .ipad-logo div {
+    margin-left: -52px;
+    margin-bottom: -50px;
+    width: 80px;
+}
+
+#ipad_wrapper .head {
+    margin-bottom: 1.2rem;
+}
+
+.counter {
+    text-align: center;
+    padding: 2rem;
+    font-weight: 600;
+}
+
+.counter .flex-container {
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.counter .time {
+    border: 5px solid var(--secondary-red);
+    color: var(--primary-red);
+    border-radius: 100%;
+    padding: .5rem;
+    width: 50px;
+    height: 50px;
+}
+
+.payment-gateway {
+    margin: 0 auto;
+    width: 50%;
+    padding: 2rem 0;
+}
+
+.payment-form label {
+    font-weight: 600;
+    padding-left: 1rem;
+}
+
+.payment-form label:not(.label-mobile) {
+    display: none;
+}
+
+.payment-form .card-info {
+    flex-direction: column;
+}
+
+.payment-form .pay-btn {
+    width: 90%;
+    margin: 0 auto;
+    transition: transform .5s ease-in-out;
+}
+
+.payment-form .pay-btn:hover {
+    transform: scale(1.1);
+}
+
+.payment-form .pay-btn input {
+    background: rgb(82,220,114);
+    background: linear-gradient(180deg, rgba(82,220,114,1) 2%, rgba(50,181,80,1) 100%);
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem 0;
+    color: var(--primary-white);
+    font-weight: 600;
+    font-family: inherit;
+    margin: 2rem 0;
+}
+
+@media (min-width: 360px) {
+    #ipad_wrapper .ipad-display .deal-tag-top .accent {
+        font-size: 2.2rem;
+    }
+
+    #ipad_wrapper .ipad-display .deal-tag-bottom .accent {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 992px) {
+    
+    #ipad_wrapper .colors .gray-selected::after,
+    #ipad_wrapper .colors .black-selected::after,
+    #ipad_wrapper .colors .blue-selected::after,
+    #ipad_wrapper .colors .green-selected::after,
+    #ipad_wrapper .colors .pink-selected::after {
+        right: unset;
+        margin-right: 0;
+        left: -100%;
+        margin-left: -35px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    #form_wrapper .form-inputs {
+        padding: 1rem 1rem 2rem;
+    }
+    .payment-form .card-info {
+        flex-direction: row;
+        gap: 1rem;
+        align-items: end;
+    }
+
+    .payment-form .card-info .form-input {
+        margin-bottom: 0;
+    }
+
+    .payment-form label:not(.label-mobile) {
+        display: block;
+    }
+
+    .payment-form .label-mobile:not(.label-desktop) {
+        display: none;
+    }
+    .container {
+        flex-direction: row;
+        gap: 3rem;
+    }
+    .container > section {
+        width: 50%;
+    }
+    #ipad_wrapper .ipad-display .deal-tag-top .accent {
+        font-size: 2.2rem;
+    }
+
+    #ipad_wrapper .ipad-display .deal-tag-bottom .accent {
+        font-size: 1.2rem;
+    }
+    
+    #ipad_wrapper .ipad-logo {
+        display: none;
+    }
+    
+    #form_wrapper .ipad-logo {
+        display: block;
+    }
 }
 
 
